@@ -47,7 +47,7 @@ def app(df):
 			st.pyplot()
 		if st.checkbox('Plot Decision Tree'):
 			dot = tree.export_graphviz(decision_tree = dtree, max_depth = 3, out_file = None, filled = True, rounded = True, feature_names = feature_columns, class_names = ['0', '1'])
-			st.graphviz_chart(dot.Graph)
+			st.graphviz_chart(dot)
 
 	elif plot_select == 'GridSearchCV Best Tree Classifier':
 		feature_column = [i for i in df.columns if i not in ['SkinThickness', 'Pregnancies', 'Outcome']]
