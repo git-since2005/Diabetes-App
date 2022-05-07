@@ -16,7 +16,7 @@ import warnings
 def app(df):
 	warnings.filterwarnings('ignore')
 	st.set_option('deprecation.showPyplotGlobalUse', False)
-	st.title('Visualise the Diabetes Prediction Web app')
+	st.title('Visualise the Diabetes Prediction Web ')
 
 	if st.checkbox("Show the correlation map"):
 		st.subheader('Correlation Heatmap')
@@ -41,10 +41,10 @@ def app(df):
 		y_train_pred = dtree.predict(x_train)
 		y_test_pred = dtree.predict(x_test)
 
-		if st.checkbox("Plot Confusion Matrix"):
-			plt.figure(figsize = (17, 6))
-			plot_confusion_matrix(dtree, x_train, y_train, values_format = 'd')
-			st.pyplot()
+		# if st.checkbox("Plot Confusion Matrix"):
+		# 	plt.figure(figsize = (17, 6))
+		# 	plot_confusion_matrix(dtree, x_train, y_train, values_format = 'd')
+		# 	st.pyplot()
 		if st.checkbox('Plot Decision Tree'):
 			dot = tree.export_graphviz(decision_tree = dtree, max_depth = 3, out_file = None, filled = True, rounded = True, feature_names = feature_columns, class_names = ['0', '1'])
 			st.graphviz_chart(dot)
@@ -65,12 +65,10 @@ def app(df):
 		y_train_pred = grid.predict(x_train)
 		y_test_pred = grid.predict(x_test)
 
-		if st.checkbox('Plot confusion matrix'):
-			plt.figure(figsize = (17, 6))
-			plot_confusion_matrix(grid, x_train, y_train, values_format = 'd')
-			st.pyplot()
+		# if st.checkbox('Plot confusion'):
+		# 	plt.figure(figsize = (17, 6))
+		# 	plot_confusion_matrix(grid, x_train, y_train, values_format = 'd')
+		# 	st.pyplot()
 		if st.checkbox('Plot Decision Tree'):
 			dot_data = tree.export_graphviz(decision_tree = best_tree, out_file = None, rounded = True, filled = True, class_names = ['0', '1'], feature_names = feature_column)
 			st.graphviz_chart(dot_data)
-			sns.heatmap(df.corr())
-			st.pyplot()
