@@ -18,7 +18,7 @@ def app(df):
 			st.write(df[col].dtype)
 	with col3:
 		if st.checkbox("View column data"):
-			data_col = st.selectbox("Select a column", df.columns)
+			data_col = st.selectbox("Select a column", df.columns, key="Show column data")
 			st.table(df[data_col])
 	if st.checkbox("Show summary"):
 		st.table(df.describe())
